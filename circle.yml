@@ -7,5 +7,5 @@ deployment:
     branch: master
     commands:
       - npm install retry-cli@0.3.0
-      - git fetch --unshallow
+      - git fetch --unshallow || true
       - retry -- git push ssh://5725f90289f5cfa26300002e@emilia-pinemz3.rhcloud.com/~/git/emilia.git/ master
