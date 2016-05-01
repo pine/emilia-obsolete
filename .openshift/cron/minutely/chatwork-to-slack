@@ -1,4 +1,12 @@
 #!/bin/bash -xe
 
-PATH=$OPENSHIFT_REPO_DIR/node_modules/.bin:$PATH
-which chatwork-to-slack
+MONGODB_URL=${OPENSHIFT_MONGODB_DB_URL}${OPENSHIFT_APP_NAME}
+
+PATH=${OPENSHIFT_REPO_DIR}node_modules/.bin:$PATH
+
+chatwork-to-slack \
+    --chatwork-room-id=$CHATWORK_ROOM_ID \
+    --chatwork-api-token=$CHATWORK_API_TOKEN \
+    --slack-webhook-url=$SLACK_WEBHOOK_URL \
+    --slack-channel=$SLACK_CHANNEL_NAME \
+    --mongodb-url=$MONGODB_URL
