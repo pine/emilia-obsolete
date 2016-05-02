@@ -1,4 +1,4 @@
-# Emilia [![Circle CI](https://circleci.com/gh/pine613/Emilia.svg?style=svg)](https://circleci.com/gh/pine613/Emilia)
+# Emilia [![Circle CI](https://circleci.com/gh/pine/Emilia.svg?style=svg)](https://circleci.com/gh/pine/Emilia)
 
 Emilia is a private tool that transfer chat messages from ChatWork to Slack (with [chatwork-to-slack](https://github.com/pine613/chatwork-to-slack) module).
 
