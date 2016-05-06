@@ -28,3 +28,6 @@ $ rhc env set CHATWORK_ROOM_ID=12345 \
 $ git remote add deploy ssh://xxxxxxxxxxxxxxxxxxxxxxxx@appname-domain.rhcloud.com/~/git/appname.git/
 $ git push deploy master
 ```
+
+## License
+ISC License
