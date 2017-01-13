@@ -27,3 +27,11 @@ chatwork-to-slack \
     --slack-channel=$SLACK_CHANNEL_NAME3 \
     --slack-icon-url=$SLACK_ICON_URL \
     --mongodb-url=$MONGODB_URL
+
+chatwork-to-slack \
+    --chatwork-room-id=$CHATWORK_ROOM_ID4 \
+    --chatwork-api-token=$CHATWORK_API_TOKEN \
+    --slack-webhook-url=$SLACK_WEBHOOK_URL \
+    --slack-channel=$SLACK_CHANNEL_NAME4 \
+    --slack-icon-url=$SLACK_ICON_URL \
+    --mongodb-url=$MONGODB_URL
