@@ -11,6 +11,6 @@
   "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "chatwork-to-slack": "^0.1.0"
+    "chatwork-to-slack": "^0.2.0"
   }
 }
