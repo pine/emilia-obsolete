@@ -1,0 +1,15 @@
+{
+  "name": "emilia",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "repository": "git@github.com:pine/Emilia.git",
+  "author": "Pine Mizune <pinemz@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "fancy-log": "^1.3.0"
+  }
+}
