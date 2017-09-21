@@ -5,11 +5,11 @@
   "scripts": {
     "start": "node app"
   },
+  "dependencies": {
+    "fancy-log": "^1.3.0"
+  },
   "repository": "git@github.com:pine/Emilia.git",
   "author": "Pine Mizune <pinemz@gmail.com>",
   "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "fancy-log": "^1.3.0"
-  }
+  "private": true
 }
