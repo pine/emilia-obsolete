@@ -25,4 +25,7 @@ server.listen(port, () => {
 
 // ----------------------------------------------------------------------------
 
+const chatworkToSlack = require('./tasks/chatwork_to_slack')
+chatworkToSlack()
+
 // vim: se et ts=2 sw=2 sts=2 ft=javascript :
