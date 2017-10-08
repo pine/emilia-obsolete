@@ -8,6 +8,7 @@ const _ = require('lodash')
 
 const MongoDb = require('../lib/mongodb')
 const Slack = require('../lib/slack')
+const util = require('../lib/util')
 
 // ----------------------------------------------------------------------------
 
@@ -29,6 +30,13 @@ if (_.isEmpty(slackToken)) {
 if (_.isNaN(roomCount)) {
   log('`CHATWORK_ROOM_COUNT` is required.')
   process.exit(1)
+}
+
+// ----------------------------------------------------------------------------
+
+let sinceDateTime = new Date(1970, 1, 1)
+if (!_.isEmpty(process.env.SINCE_DATETIME)) {
+  sinceDateTime = new Date(process.env.SINCE_DATETIME)
 }
 
 // ----------------------------------------------------------------------------
@@ -64,12 +72,13 @@ module.exports = async () => {
   for (const room of rooms) {
     const messages = await chatworkMessages({ roomId: room.rid, token: chatworkToken })
     const newMessages = await mongo.filterIfNotExist(messages)
+    const filteredMessages = util.filterSinceDateTime(newMessages, sinceDateTime)
 
-    if (_.size(newMessages) === 0) return
-    log(`Find ${_.size(newMessages)} messages on rid:${room.rid}`)
+    if (_.size(filteredMessages) === 0) return
+    log(`Find ${_.size(filteredMessages)} messages on rid:${room.rid}`)
 
-    await slack.notifyMessages({ channel: room.channel, messages: newMessages })
-    await mongo.save(newMessages)
+    await slack.notifyMessages({ channel: room.channel, messages: filteredMessages })
+    await mongo.save(filteredMessages)
   }
 
   await mongo.disconnect()
