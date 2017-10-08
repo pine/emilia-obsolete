@@ -74,7 +74,7 @@ module.exports = async () => {
     const newMessages = await mongo.filterIfNotExist(messages)
     const filteredMessages = util.filterSinceDateTime(newMessages, sinceDateTime)
 
-    if (_.size(filteredMessages) === 0) break
+    if (_.size(filteredMessages) === 0) continue
     log(`Find ${_.size(filteredMessages)} messages on rid:${room.rid}`)
 
     await slack.notifyMessages({ channel: room.channel, messages: filteredMessages })
