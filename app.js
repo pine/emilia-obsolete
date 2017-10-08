@@ -25,7 +25,12 @@ server.listen(port, () => {
 
 // ----------------------------------------------------------------------------
 
+const { CronJob } = require('cron')
 const chatworkToSlack = require('./tasks/chatwork_to_slack')
+
 chatworkToSlack()
+new CronJob('*/5 * * * *', async () => {
+    await chatworkToSlack()
+}, null, true, 'Asia/Tokyo')
 
 // vim: se et ts=2 sw=2 sts=2 ft=javascript :
