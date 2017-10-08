@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/workspace
+    docker:
+      - image: node:8.5.0
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: Emilia-{{ .Branch }}-{{ checksum 'yarn.lock' }}
+      - run:
+          name: System information
+          command: |
+            echo "Node $(node -v)"
+            echo "Yarn v$(yarn --version)"
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Test
+          command: yarn test
+      - save_cache:
+          key: Emilia-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/workspace/node_modules
+            - ~/.cache/yarn/
+      - add_ssh_keys:
+          fingerprints:
+            - "64:05:c0:6b:c0:e8:97:f5:eb:86:6d:88:e1:f1:c7:bb"
+      - deploy:
+          name: Deploy Master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == 'master' ]; then
+              bash .circleci/setup-heroku.sh
+              git push -f heroku master
+            fi
