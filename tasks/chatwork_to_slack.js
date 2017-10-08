@@ -11,7 +11,7 @@ const Slack = require('../lib/slack')
 
 // ----------------------------------------------------------------------------
 
-const mongoUrl = 'mongodb://127.0.0.1:27017/emilia'
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/emilia'
 const chatworkToken = process.env.CHATWORK_API_TOKEN
 const slackToken = process.env.SLACK_API_TOKEN
 const roomCount = +process.env.CHATWORK_ROOM_COUNT
