@@ -27,7 +27,7 @@ jobs:
             - ~/.cache/yarn/
       - add_ssh_keys:
           fingerprints:
-            - "64:05:c0:6b:c0:e8:97:f5:eb:86:6d:88:e1:f1:c7:bb"
+            - "23:b8:73:29:5e:9b:e0:c1:70:00:93:f8:95:e4:43:13"
       - deploy:
           name: Deploy Master to Heroku
           command: |
