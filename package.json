@@ -1,16 +1,27 @@
 {
-  "name": "openshift-cartridge-nodejs-template",
-  "version": "1.0.1",
-  "description": "Custom Node.js cartridge for OpenShift - sample application",
-  "private": true,
-  "main": "start.js",
+  "name": "emilia",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "node --use_strict start.js",
-    "test": "echo No Tests"
+    "start": "node app"
   },
-  "author": "Ionut-Cristian Florescu <ionut.florescu@gmail.com>",
-  "license": "ISC",
   "dependencies": {
-    "chatwork-to-slack": "^0.2.0"
-  }
+    "@slack/client": "^3.14.0",
+    "chatwork-messages": "^0.1.0",
+    "cron": "^1.3.0",
+    "fancy-log": "^1.3.0",
+    "lodash": "^4.17.4",
+    "mongodb": "^2.2.31",
+    "promise-retry": "^1.1.1",
+    "promise.sleep": "^0.2.0",
+    "throat": "^4.1.0"
+  },
+  "engines": {
+    "node": "~8.5.0",
+    "yarn": "~1.0.2"
+  },
+  "repository": "git@github.com:pine/Emilia.git",
+  "author": "Pine Mizune <pinemz@gmail.com>",
+  "license": "MIT",
+  "private": true
 }

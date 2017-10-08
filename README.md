@@ -3,28 +3,27 @@
 
 Emilia is a private tool that transfer chat messages from ChatWork to Slack (with [chatwork-to-slack](https://github.com/pine613/chatwork-to-slack) module).
 
-## Getting started
-### 1. Create OpenShift Account
-### 2. Create OpenShift Application
-Cartridges
- - [Custom Node.js cartridge for OpenShift](https://github.com/icflorescu/openshift-cartridge-nodejs)
- - [MongoDB](https://hub.openshift.com/addons/21-mongodb)
- - [Cron](https://hub.openshift.com/addons/26-cron)
+## Requirements
 
-### 3. Add environment variables
+- Node v`$(cat .node-version)`
+- Yarn
+
+## Running Locally
+
 ```
-$ rhc env set CHATWORK_ROOM_ID=12345 \
-              CHATWORK_API_TOKEN=TOKEN \
-              SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/xxxxxxxxxxxxxxxxxxxxxxxx \
-              SLACK_CHANNEL_NAME=channel \
-              SLACK_ICON_URL=http://example.com/icons/chatwork.png -a appname
+$ git clone https://github.com/pine/Emilia.git
+$ cd Emilia
+$ yarn
+$ yarn start
 ```
 
-### 4. Deploy
+## Deploying to Heroku
+
 ```
-$ git remote add deploy ssh://xxxxxxxxxxxxxxxxxxxxxxxx@appname-domain.rhcloud.com/~/git/appname.git/
-$ git push deploy master
+$ heroku create
+$ git push heroku master
+$ heroku open
 ```
 
 ## License
-ISC License
+MIT License

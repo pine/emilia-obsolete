@@ -1,43 +1,36 @@
-const http         = require('http'),
-      fs           = require('fs'),
-      path         = require('path'),
-      contentTypes = require('./utils/content-types'),
-      sysInfo      = require('./utils/sys-info'),
-      env          = process.env;
+#!/usr/bin/env node
+'use strict'
 
-let server = http.createServer(function (req, res) {
-  let url = req.url;
-  if (url == '/') {
-    url += 'index.html';
-  }
+const log = require('fancy-log')
+const http = require('http')
 
-  // IMPORTANT: Your application HAS to respond to GET /health with status 200
-  //            for OpenShift health monitoring
-
-  if (url == '/health') {
-    res.writeHead(200);
-    res.end();
-  } else if (url.indexOf('/info/') == 0) {
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Cache-Control', 'no-cache, no-store');
-    res.end(JSON.stringify(sysInfo[url.slice(6)]()));
+const server = http.createServer((req, res) => {
+  if (req.url === '/' || req.url === '/health' || req.url === '/healthcheck') {
+    res.writeHead(200)
+    res.end('OK')
   } else {
-    fs.readFile('./static' + url, function (err, data) {
-      if (err) {
-        res.writeHead(404);
-        res.end();
-      } else {
-        let ext = path.extname(url).slice(1);
-        res.setHeader('Content-Type', contentTypes[ext]);
-        if (ext === 'html') {
-          res.setHeader('Cache-Control', 'no-cache, no-store');
-        }
-        res.end(data);
-      }
-    });
-  }
-});
+    res.writeHead(404)
+    res.end('Not Found')
+	}
+})
 
-server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
-  console.log(`Application worker ${process.pid} started...`);
-});
+server.on('clientError', (err, socket) => {
+  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n')
+})
+
+const port = process.env.PORT || 5000
+server.listen(port, () => {
+   log(`Listining: http://0.0.0.0:${port}`)
+})
+
+// ----------------------------------------------------------------------------
+
+const { CronJob } = require('cron')
+const chatworkToSlack = require('./tasks/chatwork_to_slack')
+
+chatworkToSlack()
+new CronJob('*/5 * * * *', async () => {
+    await chatworkToSlack()
+}, null, true, 'Asia/Tokyo')
+
+// vim: se et ts=2 sw=2 sts=2 ft=javascript :
