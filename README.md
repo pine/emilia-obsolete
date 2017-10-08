@@ -1,7 +1,7 @@
 # Emilia
 [![CircleCI](https://circleci.com/gh/pine/Emilia/tree/master.svg?style=shield)](https://circleci.com/gh/pine/Emilia/tree/master) [![Dependency Status](https://gemnasium.com/badges/github.com/pine/Emilia.svg)](https://gemnasium.com/github.com/pine/Emilia)
 
-Emilia is a private tool that transfer chat messages from ChatWork to Slack (with [chatwork-to-slack](https://github.com/pine613/chatwork-to-slack) module).
+Emilia is a private tool that transfer chat messages from ChatWork to Slack (with [chatwork-messages](https://github.com/pine/chatwork-messages) module).
 
 ## Requirements
 
@@ -26,4 +26,4 @@ $ heroku open
 ```
 
 ## License
-MIT License
+MIT &copy; Pine Mizune
