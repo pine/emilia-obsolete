@@ -3,6 +3,7 @@
 const querystring = require('querystring')
 
 const chatworkMessages = require('chatwork-messages')({ force: true })
+const config = require('config')
 const log = require('fancy-log')
 const _ = require('lodash')
 
@@ -66,7 +67,11 @@ for (let i = 0; i < roomCount; ++i) {
 
 module.exports = async () => {
   const mongo = new MongoDb({ url: mongoUrl })
-  const slack = new Slack({ token: slackToken })
+  const slack = new Slack({
+    token: slackToken,
+    iconUrl: config.get('slack.iconUrl'),
+  })
+
   await mongo.connect()
 
   for (const room of rooms) {
