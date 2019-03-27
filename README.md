@@ -1,5 +1,5 @@
 # Emilia
-[![CircleCI](https://circleci.com/gh/pine/Emilia/tree/master.svg?style=shield)](https://circleci.com/gh/pine/Emilia/tree/master) [![Dependency Status](https://gemnasium.com/badges/github.com/pine/Emilia.svg)](https://gemnasium.com/github.com/pine/Emilia)
+[![CircleCI](https://circleci.com/gh/pine/Emilia/tree/master.svg?style=shield)](https://circleci.com/gh/pine/Emilia/tree/master) [![Dependency Status](https://gemnasium.com/badges/github.com/pine/Emilia.svg)](https://gemnasium.com/github.com/pine/Emilia) [![Greenkeeper badge](https://badges.greenkeeper.io/pine/Emilia.svg)](https://greenkeeper.io/)
 
 Emilia is a private tool that transfer chat messages from ChatWork to Slack (with [chatwork-messages](https://github.com/pine/chatwork-messages) module).
 
